@@ -1,132 +1,214 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .container {
-    width: 100%;
-  }
-  .site-title {
-    font-size: 2rem; /* Font boyutu artırıldı */
-    font-weight: bold; /* Kalın font */
-    font-family: 'Trebuchet MS', sans-serif; /* Font ailesi değiştirildi */
-    color: #e0e0e0; /* Renk değiştirildi */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Gölgeli metin */
-  }
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px; /* Navbarın boyutunu büyütmek için padding artırıldı */
-    background-color: #3c5252;
-    border-bottom: none;
-    color: #f2f0f0;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo-image {
-    height: 80px; /* Logo boyutu artırıldı */
-    margin-right: 10px;
-  }
-  
-  nav {
-    display: flex;
-    align-items: center;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    display: flex;
-    gap: 30px; /* Menü öğeleri arasındaki boşluk artırıldı */
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav a {
-    text-decoration: none;
-    color: #f9f7f7;
-    font-weight: bold;
-    font-size: 1.2rem; /* Yazı boyutu artırıldı */
-  }
-  
-  .donate-button {
-    background-color: #7d7a7a;
-    color: #fff;
-    border-radius: 5px;
-    border: none;
-    padding: 15px 30px; /* Buton boyutu artırıldı */
-    cursor: pointer;
-    margin-left: 20px;
-    font-size: 1.0rem; /* Buton yazı boyutu artırıldı */
-    font-weight: bold;
-  }
-  
-  .donate-button:hover {
-    background-color: #323232;
-  }
-  
-  .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px 20px;
-    background-image: url('../assets/d16380be-4a64-4ce6-a90a-da3212b51951.webp');
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    text-align: center;
-    height: 100vh; /* İsteğe bağlı olarak yüksekliği ayarlayabilirsiniz */
-  }
-  
-  .hero-text {
-    background-color: rgba(17, 82, 104, 0.3); /* İsteğe bağlı olarak yarı saydam arka plan */
-    padding: 20px;
-    border-radius: 15px;
-    position: relative;
-    top: -100px; /* Metin ve butonu yukarı taşımak için */
-    font-weight: bold;
-  }
-  
-  .hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: rgb(237, 239, 241);
-    font-weight: bold;
-  }
-  
-  .hero h3 {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    color: rgb(237, 239, 241);
-    font-weight: bold;
-  }
-  
-  .donate-now-button {
-    background-color: #7d7a7a;
-    color: #f2f0f0;
-    border: none;
-    border-radius: 5px;
-    padding: 15px 30px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
 
-  }
+.container {
+  width: 100%;
+  background-color: #3c5252;;
+}
+
+.site-title {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', sans-serif;
+  color: #e0e0e0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #3c5252;
+  color: #f2f0f0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.header-placeholder {
+  height: 60px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 40px;
+  margin-right: 10px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f9f7f7;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.donate-button {
+  background-color: #7d7a7a;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.donate-button:hover {
+  background-color: #323232;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  background-image: url('../assets/0d986200-a4af-40a9-8346-18ec4785179c.webp');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  height: 50vh;
+  margin-top: 60px;
+}
+
+.hero-text {
+  background-color: rgba(17, 82, 104, 0.3);
   
-  .donate-now-button:hover {
-    background-color: #2a2929;
+  padding: 20px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.hero h3 {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.donate-now-button {
+  background-color: #7d7a7a;
+  color: #f2f0f0;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.donate-now-button:hover {
+  background-color: #2a2929;
+}
+
+.donation-info, .give-food-now, .end-hunger {
+  background-color: #e6f7ff;
+  margin: 0px 0;
+  padding: 40px;
+  text-align: center;
+  border-radius: 0px;
+  line-height: 3rem;
+}
+
+.give-food-now {
+  background-image: url('../assets/mainpagebackground.png.webp');
+  background-size: cover;
+  background-position: center;
+  color: #f9f7f7;
+  line-height: 3rem;
+}
+
+.donation-info h2, .give-food-now h2, .end-hunger h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  line-height: 3rem;
+}
+
+.donation-info p, .give-food-now p, .end-hunger p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 3rem;
+}
+
+.donate-today-button {
+  background-color: #7d7a7a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.donate-today-button:hover {
+  background-color: #2a2929;
+}
+
+footer {
+  text-align: center;
+  margin-top: 0;
+  padding: 20px;
+  background-color: #4d5c6a;
+  font-weight:100;
+  font-size: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  footer {
-    text-align: center;
-    margin-top: 0;
-    padding: 20px;
-    background-color: #4d5c6a;
-    border-top: none;
-    font-weight: bold;
+
+  .donate-button {
+    margin-top: 10px;
+    margin-left: 0;
   }
-  
+
+  .header-placeholder {
+    height: 120px;
+  }
+
+  .hero {
+    margin-top: 120px;
+  }
+
+  .site-title {
+    font-size: 1.2rem;
+  }
+
+  nav a {
+    font-size: 0.8rem;
+  }
+}
