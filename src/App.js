@@ -1,13 +1,18 @@
-
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainPage from './components/mainpage';
 import './App.css'; // Stil dosyası
 
 const App = () => {
   return (
-    <div className="App">
-      <MainPage />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          {/* Diğer yollar buraya eklenebilir */}
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
