@@ -1,7 +1,7 @@
 // mainpage.js
 import React from 'react';
 import '../styles/MainPage.css'; // Stil dosyası
-import logo from '../logo.png';
+import logo from '../assets/logo.png';
 
 const mainpage = () => {
     return (
