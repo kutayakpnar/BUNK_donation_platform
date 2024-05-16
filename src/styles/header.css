@@ -1,0 +1,112 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--dark_color);
+    color: var(--light_color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+  
+  .header-placeholder {
+    height: 60px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-image {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .logo-image:hover{
+    animation: logo_hover_animation 1s forwards;
+  }
+
+  .logo-image:not(:hover) {
+    animation: logo_animation 1s forwards;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    padding: 15px 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: var(--light_color);
+    transition: background-color 0.3s ease;
+  }
+
+  nav li:hover{
+    background-color: var(--secondary_color);
+  }
+  
+  nav a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .donate-button {
+    background-color: var(--main_color);
+    color: var(--dark_color);
+    transition: color 0.3s ease;
+  }
+
+  .donate-button:hover{
+    color:var(--light_color);
+  }
+
+  @keyframes logo_hover_animation {
+    from {
+      transform: rotate(0deg) scale(1);
+    }
+    to {
+      transform: rotate(360deg) scale(1.2);
+    }
+  }
+  
+  @keyframes logo_animation {
+    from {
+      transform: rotate(360deg) scale(1.2);
+    }
+    to {
+      transform: rotate(0deg) scale(1);
+    }
+  }
+  
+
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .site-title {
+      font-size: 1.2rem;
+    }
+  
+    nav a {
+      font-size: 0.8rem;
+    }
+  }
+  

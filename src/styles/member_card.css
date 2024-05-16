@@ -1,0 +1,27 @@
+.member_card{
+    display: inline-block;
+    text-align: center;
+    width: 300px;
+    height: fit-content;
+    background-color: var(--light_color);
+    opacity: 0.8;
+    border-radius: 20px;
+    padding: 30px;
+    min-height: 450px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    margin: 0 20px;
+}
+
+.member_card:hover{
+    opacity: 1;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+}
+
+.member_card_image{
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+    display: inline-block;
+    border-radius: 50%;
+}
