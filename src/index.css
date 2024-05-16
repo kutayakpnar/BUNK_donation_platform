@@ -1,10 +1,26 @@
+:root{
+  --main_color: #a9cce3;
+  --secondary_color: #e6b0aa;
+  --light_color: #fdf2e9;
+  --dark_color: #7d7a7a;
+  --background_gradient_colors: linear-gradient(to bottom, var(--main_color), var(--secondary_color));
+  --error_color: red;
+
+  transition: all 0.5s ease;
+}
+
 body {
+  background: linear-gradient(to bottom, var(--main_color), var(--secondary_color)), url(../public/background.png);
+  background-blend-mode: multiply;
   margin: 0;
+  width: 100%;
+  height: fit-content;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: black;
 }
 
 code {
