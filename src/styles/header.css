@@ -3,7 +3,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: var(--dark_color);
+    background-color: #4d5c6a;
     color: var(--light_color);
     position: fixed;
     width: 100%;
@@ -68,7 +68,7 @@ header {
   
   .donate-button {
     background-color: var(--main_color);
-    color: var(--dark_color);
+    color: white;
     transition: color 0.3s ease;
   }
 

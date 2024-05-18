@@ -1,0 +1,41 @@
+/* ContactPage.css */
+
+.contact-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Sayfanın yüksekliğine göre ayarlayabilirsiniz */
+    padding: 20px;
+  }
+  
+  .map-container {
+    flex: 1;
+    max-width: 600px;
+    height: 450px; /* Sabit yükseklik */
+  }
+  
+  .contact-info {
+    flex: 1;
+    max-width: 400px;
+    height: 400px; /* Sabit yükseklik */
+    background-color: rgba(255, 255, 255, 0.8); /* Arka plan rengi ve saydamlık */
+    padding: 20px;
+    border-radius: 10px; /* Köşeleri yuvarlatmak için */
+    margin-left: 20px; /* Haritadan biraz uzaklaştırmak için */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .contact-info h2 {
+    margin-top: 0;
+  }
+  
+  .contact-info p {
+    margin: 10px 0; /* Paragraflar arası boşluk */
+  }
+  
+  .contact-info p strong {
+    font-weight: bold; /* Koyu yazı */
+  }
+  

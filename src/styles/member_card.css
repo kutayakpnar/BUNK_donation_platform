@@ -2,7 +2,7 @@
     display: inline-block;
     text-align: center;
     width: 300px;
-    height: fit-content;
+    height: 500px;
     background-color: var(--light_color);
     opacity: 0.8;
     border-radius: 20px;
