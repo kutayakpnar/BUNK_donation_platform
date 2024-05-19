@@ -25,7 +25,9 @@ const MainPage = () => {
                     <div className="hero-text">
                         <h2>Reach out to People</h2>
                         <h3>We build bridges between you and people with BUNK!</h3>
-                        <button className="donate-now-button">DONATE NOW</button>
+                        <Link to="/donate">
+                    <button className="donate-now-button">DONATE NOW</button>
+                        </Link>
                     </div>
                 </section>
 

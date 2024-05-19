@@ -9,6 +9,7 @@ import MainMarginBox from "./components/main_margin_box";
 import TeamPage from './pages/team_page';
 import Footer from "./components/footer";
 import LocationsPage from './pages/locations_page';
+import DonatePage from './pages/donate_page';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/who-we-are" element={<TeamPage />} />
             <Route path="/where-we-work" element={<LocationsPage />} />
+            <Route path="/donate" element={<DonatePage />} />
             {/* Diğer yollar buraya eklenebilir */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
