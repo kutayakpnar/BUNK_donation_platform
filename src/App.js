@@ -11,6 +11,8 @@ import Footer from "./components/footer";
 import LocationsPage from './pages/locations_page';
 import DonatePage from './pages/donate_page';
 
+import firebaseApp from './firebaseConfig';
+
 const App = () => {
   return (
     <Router>
