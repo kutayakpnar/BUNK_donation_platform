@@ -4,7 +4,7 @@ import default_member_image from "../assets/profile-user.png";
 
 const TeamPage = () => {
     return (
-    <div className="member_card_cover ">
+    <div className="member_card_cover">
         <h2>Meet with BUNK Team!</h2>
         <MemberCard member_image_url={default_member_image} member_name="Ünal Dalkılıç" member_info="Ünal Dalkılıç info will goes here"/>
         <MemberCard member_image_url={default_member_image} member_name="Mehmet Kutay Akpınar" member_info="Kutay Akpınar info will goes here"/>
