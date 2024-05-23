@@ -1,0 +1,74 @@
+.donate_page_div {
+    min-height: 70vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.donation_options{
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px;
+    position: relative;  /* Pozisyon referansı sağlar */
+}
+
+.donation_summary_panel {
+    background-color: var(--light_color);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.donation_summary_panel h3{
+    text-align: center;
+    font-size: 20px;
+}
+
+.donation_summary_panel p{
+    text-align: right;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.donation_summary_content{
+    flex-grow: 1;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.donate_button{
+    text-align: center;
+    font-weight: bold;
+    background-color: var(--dark_color);
+    padding: 10px;
+    border-radius: 30px;
+    color: var(--light_color);
+    transition: all 0.3s ease;
+}
+
+.donate_button:hover{
+    background-color: var(--secondary_color);
+    cursor: pointer;
+}
+
+.donation_summary_content_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.donation_summary_content_row p{
+    font-size: 15px;
+    margin: 0;
+}
+
+.donation_summary_content_row h5{
+    font-size: 17px;
+    margin: 0;
+}

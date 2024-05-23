@@ -32,6 +32,7 @@ body {
 .hero-text {
   background-color: rgba(17, 82, 104, 0.3);
   
+  
   padding: 20px;
   border-radius: 15px;
   font-weight: bold;
@@ -52,7 +53,7 @@ body {
 }
 
 .donate-now-button {
-  background-color: #7d7a7a;
+  background-color: #4d5c6a;
   color: #f2f0f0;
   border: none;
   border-radius: 5px;
@@ -67,7 +68,8 @@ body {
 }
 
 .donation-info, .give-food-now, .end-hunger {
-  background-color: #e6f7ff;
+  /*background-color: #e6f7ff;*/
+  background-color:white;
   margin: 0px 0;
   padding: 40px;
   text-align: center;
@@ -79,7 +81,8 @@ body {
   background-image: url('../assets/mainpagebackground.png.webp');
   background-size: cover;
   background-position: center;
-  color: #f9f7f7;
+  color: white;
+  background-color:white;
   line-height: 3rem;
 }
 
@@ -96,7 +99,7 @@ body {
 }
 
 .donate-today-button {
-  background-color: #7d7a7a;
+  background-color: #4d5c6a;
   color: #fff;
   border: none;
   border-radius: 5px;

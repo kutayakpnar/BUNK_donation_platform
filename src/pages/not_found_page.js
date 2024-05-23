@@ -2,7 +2,7 @@ import "../styles/not_found_page.css";
 
 const NotFoundPage = () => {
   return (
-    <div style={{height:"100vh"}}>
+    <div className="page_div">
       <h2>404 Not Found</h2>
       <p>Aradığınız sayfa bulunamadı.</p>
     </div>

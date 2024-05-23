@@ -9,6 +9,11 @@
   transition: all 0.5s ease;
 }
 
+::selection{
+  background-color: var(--secondary_color);
+  color: var(--light_color);
+}
+
 body {
   background: linear-gradient(to bottom, var(--main_color), var(--secondary_color)), url(../public/background.png);
   background-blend-mode: multiply;
@@ -21,6 +26,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: black;
+}
+
+.page_div {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--main_color), var(--secondary_color)), url(../public/background.png);
+  background-blend-mode: multiply;
+  margin: 0;
 }
 
 code {

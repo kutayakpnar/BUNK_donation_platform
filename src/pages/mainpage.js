@@ -1,15 +1,22 @@
 import React from 'react';
 import '../styles/MainPage.css'; // Stil dosyası
+import { Route,Link ,useNavigate} from 'react-router-dom';
 
 const MainPage = () => {
+    const navigate = useNavigate();
+
+    const handleDonateNow = () => {
+        navigate('/donate');
+    };
+
     return (
-        <div className="container">
+        <div className="container page_div">
             <main>
                 <section className="hero">
                     <div className="hero-text">
                         <h2>Reach out to People</h2>
                         <h3>We build bridges between you and people with BUNK!</h3>
-                        <button className="donate-now-button">DONATE NOW</button>
+                        <button className="donate-now-button" onClick={handleDonateNow}>DONATE NOW</button>
                     </div>
                 </section>
 
@@ -22,7 +29,7 @@ const MainPage = () => {
                 <section className="give-food-now">
                     <h2>GIVE FOOD NOW</h2>
                     <p>Make a gift today to help send lifesaving food to families in need.</p>
-                    <button className="donate-today-button">DONATE TODAY</button>
+                    <button className="donate-today-button" onClick={handleDonateNow}>DONATE TODAY</button>
                 </section>
 
                 <section className="end-hunger">

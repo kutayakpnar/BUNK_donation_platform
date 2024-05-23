@@ -1,0 +1,120 @@
+.donation_card{
+    display: inline-block;
+    text-align: center;
+    background-color: var(--light_color);
+    opacity: 0.8;
+    border-radius: 20px;
+    padding: 30px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    margin: 10px;
+    position: relative;  /* Normal durumda relative */
+}
+
+.donation_card:hover{
+    opacity: 1;
+    z-index: 999;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+}
+
+.donation_card_icon {
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+}
+
+.donation_card h3{
+    font-size: 20px;
+}
+
+.donation_card_order_bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.donation_card_order_bar p{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.donation_card_order_bar input{
+    max-width: 100px;
+    font-size: 15px;
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
+}
+
+.donation_city_selection_div{
+    margin-top: 30px;
+    text-align: left;
+}
+
+.donation_city_selection_div p{
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.donation_city_selection_div select {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
+}
+
+.donation_card hr{
+    margin-top: 30px;
+}
+
+.donation_card_detail_section:hover > .donation_card_detail_section_p {
+    color: var(--secondary_color);
+}
+
+.donation_card_detail_section:hover > .donation_card_detail_section_content{
+    max-height: 200px;
+}
+
+.donation_card_detail_section_p{
+    font-size: 13px;
+}
+
+.donation_card_detail_section_content{
+    transition: max-height 0.5s ease;
+    max-height: 0;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.donation_card_detail_section_content_detail_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.donation_card_detail_section_content_detail_row h5{
+    margin: 0;
+}
+
+.donation_card_detail_section_content_detail_row_right{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.donation_card_detail_section_content_detail_row_right div{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+}
+
+.donation_card_detail_section_content_detail_row_right p{
+    font-size: 13px;
+    margin: 0;
+}
