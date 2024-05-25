@@ -12,7 +12,7 @@ const LocationsPage = () => {
     useEffect(() => {
         const fetchLocations = async () => {
             const querySnapshot = await getDocs(collection(db, "locations"));
-            const locationsData = querySnapshot.docs.map(doc => doc.data());
+            const locationsData = querySnapshot.docs.map(doc => ({ name: doc.id, link: doc.data().mapUrl }));
             setLocations(locationsData);
         };
 
