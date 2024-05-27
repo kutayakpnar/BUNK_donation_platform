@@ -6,12 +6,14 @@
     align-items: center;
     height: 80vh; /* Sayfanın yüksekliğine göre ayarlayabilirsiniz */
     padding: 20px;
+    
   }
   
   .map-container {
     flex: 1;
     max-width: 600px;
     height: 450px; /* Sabit yükseklik */
+   
   }
   
   .contact-info {

@@ -31,7 +31,8 @@ body {
 
 .hero-text {
   background-color: rgba(17, 82, 104, 0.3);
-  
+  margin-top: 200px;
+  color: white;
   
   padding: 20px;
   border-radius: 15px;
@@ -54,7 +55,7 @@ body {
 
 .donate-now-button {
   background-color: #4d5c6a;
-  color: #f2f0f0;
+  color: white;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
