@@ -3,11 +3,16 @@ import "../styles/donate_page.css";
 import DonationCard from '../components/donation_card';
 import { collection, getDocs, doc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from '../firebaseConfig.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function DonatePage() {
   const [donations, setDonations] = useState([]);
   const [dummy, setDummy] = useState([]);
   const [error, setError] = useState("");
+
+
+  
 
   const getUnitPrice = (item) => {
     // Define unit prices for each item here
@@ -52,7 +57,7 @@ function DonatePage() {
     const transformedData = items.map(item => ({
       header: item.charAt(0).toUpperCase() + item.slice(1),
       unit_price: getUnitPrice(item),
-      icon: null,
+      icon: <FontAwesomeIcon icon={faTrash} className="icon" />,
       data: results[item]
     }));
 
