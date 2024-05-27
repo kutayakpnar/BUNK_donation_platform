@@ -31,7 +31,7 @@ body {
 
 .hero-text {
   background-color: rgba(17, 82, 104, 0.3);
-  margin-top: 200px;
+  margin-top: 380px;
   color: white;
   
   padding: 20px;
@@ -75,19 +75,27 @@ body {
   padding: 40px;
   text-align: center;
   border-radius: 0px;
-  line-height: 3rem;
+  line-height: 1rem;
 }
 
 .give-food-now {
   background-image: url('../assets/mainpagebackground.png.webp');
+  height: 600px;
   background-size: cover;
   background-position: center;
   color: white;
   background-color:white;
   line-height: 3rem;
 }
+.give-food-now h2{
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  line-height: 3rem;
+  margin-top: 220px;
 
-.donation-info h2, .give-food-now h2, .end-hunger h2 {
+}
+
+.donation-info h2,  .end-hunger h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
   line-height: 3rem;
