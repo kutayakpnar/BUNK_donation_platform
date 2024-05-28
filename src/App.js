@@ -10,6 +10,7 @@ import TeamPage from './pages/team_page';
 import Footer from "./components/footer";
 import LocationsPage from './pages/locations_page';
 import DonatePage from './pages/donate_page';
+import PaymentPage from './pages/payment'
 
 import firebaseApp from './firebaseConfig';
 
@@ -24,6 +25,7 @@ const App = () => {
         <div className="main-content">
           <Routes>
             <Route path="/" element={<MainPage />} />
+            <Route path='/payment' element={<PaymentPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/who-we-are" element={<TeamPage />} />
             <Route path="/where-we-work" element={<LocationsPage />} />

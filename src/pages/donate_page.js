@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "../styles/donate_page.css";
 import DonationCard from '../components/donation_card';
 import { collection, getDocs, doc, updateDoc, getDoc } from "firebase/firestore";
@@ -10,9 +11,7 @@ function DonatePage() {
   const [donations, setDonations] = useState([]);
   const [dummy, setDummy] = useState([]);
   const [error, setError] = useState("");
-
-
-  
+  const navigate = useNavigate();  // Use useNavigate hook
 
   const getUnitPrice = (item) => {
     // Define unit prices for each item here
@@ -119,7 +118,9 @@ function DonatePage() {
     await updateDatabase();
     await getData(); // Refetch the data to update the state with the latest values
     setDonations([]); // Clear donations after updating the database
-  };
+    const totalAmount = calculate_total(); // Calculate the total amount to pass
+    navigate("/payment", { state: { total: totalAmount } }); // Navigate to payment page with state
+};
 
   return (
     <div className='donate_page_div page_div'>
