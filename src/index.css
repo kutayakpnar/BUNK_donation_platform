@@ -3,9 +3,10 @@
   --secondary_color: #e6b0aa;
   --light_color: #fdf2e9;
   --dark_color: #7d7a7a;
-  --background_gradient_colors: linear-gradient(to bottom, var(--main_color), var(--secondary_color));
+ /* --background_gradient_colors: linear-gradient(to bottom, var(--main_color), var(--secondary_color));*/
+ --background_gradient_colors:wheat;
   --error_color: red;
-
+  background: linear-gradient(to bottom, var(--main_color), var(--secondary_color));
   transition: all 0.5s ease;
 }
 
@@ -15,8 +16,9 @@
 }
 
 body {
-  background: linear-gradient(to bottom, var(--main_color), var(--secondary_color)), url(../public/background.png);
-  background-blend-mode: multiply;
+  background: linear-gradient(to bottom, var(--main_color), var(--secondary_color));
+  /*background-color: rgb(205, 202, 202);*/
+  background-blend-mode:multiply;
   margin: 0;
   width: 100%;
   height: fit-content;
@@ -31,8 +33,9 @@ body {
 .page_div {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(to bottom, var(--main_color), var(--secondary_color)), url(../public/background.png);
+  /*background: linear-gradient(to bottom, var(--main_color), var(--secondary_color)), url(../public/background.png); */
   background-blend-mode: multiply;
+  background: linear-gradient(to bottom, var(--main_color), var(--secondary_color));
   margin: 0;
 }
 
