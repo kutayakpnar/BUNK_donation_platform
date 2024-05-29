@@ -34,17 +34,18 @@ function PaymentPage() {
         if (paymentDetails.name && paymentDetails.cardNumber.length === 16 && paymentDetails.cvv.length === 3) {
             console.log("Payment Details: ", paymentDetails);
             await updateDatabase();
-            await sendDonationToFirebase(paymentDetails.name, paymentDetails.amount);
+            await sendDonationToFirebase(paymentDetails.name, paymentDetails.amount,location.state?.donations || []);
             setPaymentSuccess(true);
         } else {
             alert('Please fill in valid payment details.');
         }
     };
-    const sendDonationToFirebase = async (name, amount) => {
+    const sendDonationToFirebase = async (name, amount, donations) => {
         try {
             await addDoc(collection(db, "donations"), {
                 name,
                 amount,
+                donations,
                 date: new Date()
             });
         } catch (e) {
