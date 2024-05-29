@@ -4,14 +4,14 @@ import "../styles/payment_page.css";
 
 function PaymentPage() {
     const location = useLocation();
-    const navigate = useNavigate(); // Add this line
+    const navigate = useNavigate();
     const [paymentDetails, setPaymentDetails] = useState({
         name: "",
         cardNumber: "",
         month: "",
         year: "",
         cvv: "",
-        amount: location.state?.total || '0'  // Ensure this is a string for consistent handling in the input field.
+        amount: location.state?.total || '0'
     });
     const [paymentSuccess, setPaymentSuccess] = useState(false);
 
@@ -19,21 +19,47 @@ function PaymentPage() {
         if (paymentSuccess) {
             setTimeout(() => {
                 navigate('/'); // Change this to the path of your main page
-            }, 5000); // Redirects after 10 seconds
+            }, 5000); // Redirects after 5 seconds
         }
-    }, [paymentSuccess, navigate]); // Dependencies in the dependency array
+    }, [paymentSuccess, navigate]);
 
     const handleChange = (e) => {
         setPaymentDetails({...paymentDetails, [e.target.name]: e.target.value});
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (paymentDetails.name && paymentDetails.cardNumber.length === 16 && paymentDetails.cvv.length === 3) {
             console.log("Payment Details: ", paymentDetails);
+            await updateDatabase();
             setPaymentSuccess(true);
         } else {
             alert('Please fill in valid payment details.');
+        }
+    };
+
+    const updateDatabase = async () => {
+        const donations = location.state?.donations || [];
+        const db = (await import('../firebaseConfig')).db;
+        const { doc, getDoc, updateDoc } = (await import('firebase/firestore'));
+
+        for (const donation of donations) {
+            const { header, amount, city } = donation;
+            const item = header.toLowerCase();
+
+            const cityDocRef = doc(db, 'locations', city);
+            const cityDocSnap = await getDoc(cityDocRef);
+
+            if (cityDocSnap.exists()) {
+                const currentData = cityDocSnap.data().items[item];
+                const updatedCurrent = currentData.current + amount;
+
+                if (updatedCurrent <= currentData.max) {
+                    await updateDoc(cityDocRef, {
+                        [`items.${item}.current`]: updatedCurrent
+                    });
+                }
+            }
         }
     };
 
@@ -80,9 +106,9 @@ function PaymentPage() {
                     <button className="button2" type="submit">Donate</button>
                 </form>
             </div>
-            
         </div>
     );
 }
 
 export default PaymentPage;
+
