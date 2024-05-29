@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import "../styles/payment_page.css";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from '../firebaseConfig.js';
 
 function PaymentPage() {
     const location = useLocation();
@@ -32,9 +34,21 @@ function PaymentPage() {
         if (paymentDetails.name && paymentDetails.cardNumber.length === 16 && paymentDetails.cvv.length === 3) {
             console.log("Payment Details: ", paymentDetails);
             await updateDatabase();
+            await sendDonationToFirebase(paymentDetails.name, paymentDetails.amount);
             setPaymentSuccess(true);
         } else {
             alert('Please fill in valid payment details.');
+        }
+    };
+    const sendDonationToFirebase = async (name, amount) => {
+        try {
+            await addDoc(collection(db, "donations"), {
+                name,
+                amount,
+                date: new Date()
+            });
+        } catch (e) {
+            console.error("Error adding document: ", e);
         }
     };
 
