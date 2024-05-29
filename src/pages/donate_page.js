@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../styles/donate_page.css";
@@ -11,10 +12,9 @@ function DonatePage() {
   const [donations, setDonations] = useState([]);
   const [dummy, setDummy] = useState([]);
   const [error, setError] = useState("");
-  const navigate = useNavigate();  // Use useNavigate hook
+  const navigate = useNavigate();
 
   const getUnitPrice = (item) => {
-    // Define unit prices for each item here
     const unitPrices = {
       clothing: 200,
       food: 100,
@@ -35,6 +35,8 @@ function DonatePage() {
       water: []
     };
 
+    
+
     const locationsCollection = collection(db, 'locations');
     const locationsSnapshot = await getDocs(locationsCollection);
 
@@ -52,7 +54,6 @@ function DonatePage() {
       });
     });
 
-    // Transform the results into the desired format for dummy data
     const transformedData = items.map(item => ({
       header: item.charAt(0).toUpperCase() + item.slice(1),
       unit_price: getUnitPrice(item),
@@ -86,41 +87,41 @@ function DonatePage() {
     return donations.reduce((total, donation) => total + (donation.amount * get_unit_price(donation.header)), 0);
   };
 
-  const updateDatabase = async () => {
-    for (const donation of donations) {
-      const { header, amount, city } = donation;
-      const item = header.toLowerCase(); // Ensure the item name matches the database field
+  
 
-      // Fetch the current data for the city
-      const cityDocRef = doc(db, 'locations', city);
-      const cityDocSnap = await getDoc(cityDocRef);
-
-      if (cityDocSnap.exists()) {
-        const currentData = cityDocSnap.data().items[item];
-        const updatedCurrent = currentData.current + amount; // Add the donated amount
-
-        if (updatedCurrent > currentData.max) {
-          setError(`Donation exceeds the maximum limit for ${header} in ${city}.`);
-          setTimeout(() => setError(""), 5000); // Clear error after 5 seconds
-          return;
+      const checkDonationLimits = async () => {
+        for (const donation of donations) {
+          const { header, amount, city } = donation;
+          const item = header.toLowerCase(); // Ensure the item name matches the database field
+    
+          // Fetch the current data for the city
+          const cityDocRef = doc(db, 'locations', city);
+          const cityDocSnap = await getDoc(cityDocRef);
+    
+          if (cityDocSnap.exists()) {
+            const currentData = cityDocSnap.data().items[item];
+            const updatedCurrent = currentData.current + amount; // Add the donated amount
+    
+            if (updatedCurrent > currentData.max) {
+              setError(`Donation exceeds the maximum limit for ${header} in ${city}.`);
+              setTimeout(() => setError(""), 5000); // Clear error after 5 seconds
+              return false;
+            }
+    
+            // Update the database with the new value
+            
+          }
         }
-
-        // Update the database with the new value
-        await updateDoc(cityDocRef, {
-          [`items.${item}.current`]: updatedCurrent
-        });
-      }
-    }
-  };
+      return true;};   
 
   const handleDonateButtonClick = async () => {
-    setError(""); // Clear previous error
-    await updateDatabase();
-    await getData(); // Refetch the data to update the state with the latest values
-    setDonations([]); // Clear donations after updating the database
-    const totalAmount = calculate_total(); // Calculate the total amount to pass
-    navigate("/payment", { state: { total: totalAmount } }); // Navigate to payment page with state
-};
+    setError("");
+    
+    const totalAmount = calculate_total();
+    if (await checkDonationLimits()){
+      console.log("vl", checkDonationLimits());
+    navigate("/payment", { state: { total: totalAmount, donations } });}
+  };
 
   return (
     <div className='donate_page_div page_div'>
