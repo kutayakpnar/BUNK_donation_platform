@@ -75,7 +75,7 @@ body {
   padding: 40px;
   text-align: center;
   border-radius: 0px;
-  line-height: 1rem;
+  line-height: 0.5rem;
 }
 
 .give-food-now {
@@ -98,13 +98,13 @@ body {
 .donation-info h2,  .end-hunger h2 {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  line-height: 3rem;
+  line-height: 1rem;
 }
 
 .donation-info p, .give-food-now p, .end-hunger p {
   font-size: 1rem;
   margin-bottom: 20px;
-  line-height: 3rem;
+  line-height: 2rem;
 }
 
 .donate-today-button {
