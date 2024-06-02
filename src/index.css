@@ -1,6 +1,7 @@
 :root{
   --main_color: #a9cce3;
   --secondary_color: #e6b0aa;
+ 
   --light_color: #fdf2e9;
   --dark_color: #7d7a7a;
  /* --background_gradient_colors: linear-gradient(to bottom, var(--main_color), var(--secondary_color));*/
@@ -36,6 +37,7 @@ body {
   /*background: linear-gradient(to bottom, var(--main_color), var(--secondary_color)), url(../public/background.png); */
   background-blend-mode: multiply;
   background: linear-gradient(to bottom, var(--main_color), var(--secondary_color));
+  /*background-color: var(--main_color);*/
   margin: 0;
 }
 
