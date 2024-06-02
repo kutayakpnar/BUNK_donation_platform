@@ -6,6 +6,7 @@
 }
 
 .payment_container {
+    margin-top: -300px;
     width: 400px; /* Suitable width for the form */
     padding: 20px; /* Padding around the content */
     background-color: #fff; /* White background for clarity */
