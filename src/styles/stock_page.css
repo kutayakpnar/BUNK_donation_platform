@@ -1,7 +1,5 @@
 .stock_page{
     width: 100%;
-    background: linear-gradient(to bottom, var(--main_color), var(--secondary_color));
-    background-blend-mode:multiply;
 }
 .tr_map{
     width: 70%;
@@ -9,34 +7,38 @@
 }
 
 .tr_map svg {
-width: 100%;
-height: auto;
-}
-.il-isimleri {
-position: absolute;
-z-index: 2;
-}
-.il-isimleri div {
-font-family: 'Open Sans';
-display: inline-block;
-background: #1094F6;
-color: #fff;
-padding: 8px 16px;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
-border-radius: 4px;
-}
-#svg-turkiye-haritasi path {
-cursor: pointer;
-fill: #222;
-}
-#svg-turkiye-haritasi path:hover {
-fill: #1094F6;
-}
-#guney-kibris {
-pointer-events: none;
+    width: 100%;
+    height: auto;
 }
 
+.il-isimleri {
+    position: absolute;
+    z-index: 2;
+}
+
+.il-isimleri div {
+    font-family: 'Open Sans';
+    display: inline-block;
+    background: #1094F6;
+    color: #fff;
+    padding: 8px 16px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#svg-turkiye-haritasi path {
+    cursor: pointer;
+    fill: #222;
+}
+
+#svg-turkiye-haritasi path.active-city:hover {
+    fill: #1094F6 !important; /* Mavi hover efekti sadece aktif şehirler için */
+}
+
+#guney-kibris {
+    pointer-events: none;
+}
 
 .city-panel {
     position: fixed;
@@ -75,9 +77,52 @@ pointer-events: none;
     border-radius: 50%;
     font-size: 24px;
     cursor: pointer;
-  }
+}
 
-.close-button:hover{
+.close-button:hover {
     background-color: red;
     color: white;
+}
+
+.item {
+    margin-bottom: 10px;
+}
+
+.progress {
+    background-color: #eee;
+    border: 1px solid #ccc;
+    height: 30px; /* Progress bar yüksekliği */
+    position: relative;
+  }
+  
+  .progress-bar {
+    background-color: #4CAF50; /* Başlangıçta yeşil renk */
+    height: 100%; /* Progress bar yüksekliğini kaplar */
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 0.4s ease; /* Geçiş efekti */
+  }
+  
+  .progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    line-height: 30px; /* Yükseklik ile aynı değer verilerek yazının ortalanması */
+    color: black;
+    pointer-events: none; /* Yazının üzerine tıklanabilirliği kaldırır */
+    z-index: 1;
+  }
+
+.progress-bar.red {
+    background-color: #f44336; /* Kırmızı renk */
+}
+
+.progress-bar.yellow {
+    background-color: #ffeb3b; /* Sarı renk */
+    color: black; /* Sarı arka plan için metin rengini siyah yap */
+}
+
+.progress-bar.green {
+    background-color: #4CAF50; /* Yeşil renk */
 }

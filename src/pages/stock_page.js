@@ -1,59 +1,141 @@
 import { useEffect, useState } from "react";
 import "../styles/stock_page.css";
 
+const data = {
+    "locations": {
+      "Adana": {
+        "items": {
+          "clothing": { "current": 567, "max": 600 },
+          "food": { "current": 315, "max": 350 },
+          "medicine": { "current": 177, "max": 180 },
+          "tent": { "current": 76, "max": 120 },
+          "water": { "current": 56, "max": 90 }
+        },
+        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51143.19246257395!2d35.2533465383097!3d37.0"
+      },
+      "Ankara": {
+        "items": {
+          "clothing": { "current": 420, "max": 500 },
+          "food": { "current": 290, "max": 350 },
+          "medicine": { "current": 150, "max": 200 },
+          "tent": { "current": 85, "max": 100 },
+          "water": { "current": 70, "max": 100 }
+        },
+        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31143.19246257395!2d32.8533465383097!3d39.9"
+      },
+      "Trabzon": {
+        "items": {
+          "clothing": { "current": 300, "max": 400 },
+          "food": { "current": 200, "max": 300 },
+          "medicine": { "current": 120, "max": 150 },
+          "tent": { "current": 60, "max": 90 },
+          "water": { "current": 50, "max": 80 }
+        },
+        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41143.19246257395!2d39.7133465383097!3d40.9"
+      },
+      "Van": {
+        "items": {
+          "clothing": { "current": 480, "max": 500 },
+          "food": { "current": 340, "max": 350 },
+          "medicine": { "current": 160, "max": 180 },
+          "tent": { "current": 90, "max": 120 },
+          "water": { "current": 10, "max": 90 }
+        },
+        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51143.19246257395!2d43.0133465383097!3d38.5"
+      },
+      "İstanbul": {
+        "items": {
+          "clothing": { "current": 600, "max": 700 },
+          "food": { "current": 350, "max": 400 },
+          "medicine": { "current": 180, "max": 200 },
+          "tent": { "current": 110, "max": 130 },
+          "water": { "current": 100, "max": 120 }
+        },
+        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71143.19246257395!2d29.0133465383097!3d41.0"
+      },
+      "İzmir": {
+        "items": {
+          "clothing": { "current": 450, "max": 550 },
+          "food": { "current": 300, "max": 350 },
+          "medicine": { "current": 160, "max": 180 },
+          "tent": { "current": 80, "max": 100 },
+          "water": { "current": 60, "max": 90 }
+        },
+        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61143.19246257395!2d27.0133465383097!3d38.4"
+      }
+    }
+  };
+
 function StockPage() {
     /*! SVG Türkiye Haritası | MIT Lisans | dnomak.com */
     const [activeCity, setActiveCity] = useState(null);
     const [isPanelOpen, setIsPanelOpen] = useState(false);
 
     useEffect(() => {
-        const element = document.querySelector('#svg-turkiye-haritasi');
+        const svgElement = document.getElementById('svg-turkiye-haritasi');
+        if (svgElement) {
+          const cityGroups = svgElement.querySelectorAll('g');
+          cityGroups.forEach(g => {
+            const cityName = g.getAttribute('data-iladi');
+            const paths = g.querySelectorAll('path');
+            if (!data.locations[cityName]) {
+              paths.forEach(path => {
+                path.setAttribute('style', 'fill: #888888; pointer-events: none;');
+                path.classList.remove('active-city'); // Aktif olmayan şehirlerde sınıfı kaldır
+              });
+            } else {
+              paths.forEach(path => {
+                path.setAttribute('style', 'fill: black; cursor: pointer;');
+                path.classList.add('active-city'); // Aktif şehirlere özel sınıf ekle
+              });
+            }
+          });
+        }
+      
         const info = document.createElement('div');
         info.className = 'il-isimleri';
         document.body.appendChild(info);
-    
+      
         const handleMouseOver = (event) => {
-          if (event.target.tagName === 'path' && event.target.parentNode.id !== 'guney-kibris') {
+          if (event.target.tagName === 'path' && data.locations[event.target.parentNode.getAttribute('data-iladi')]) {
             info.innerHTML = `<div>${event.target.parentNode.getAttribute('data-iladi')}</div>`;
           }
         };
-    
+      
         const handleMouseMove = (event) => {
           info.style.top = `${event.pageY + 25}px`;
           info.style.left = `${event.pageX}px`;
         };
-    
+      
         const handleMouseOut = () => {
           info.innerHTML = '';
         };
-    
+      
         const handleClick = (event) => {
-          if (event.target.tagName === 'path') {
+          if (event.target.tagName === 'path' && data.locations[event.target.parentNode.getAttribute('data-iladi')]) {
             const parent = event.target.parentNode;
-            const id = parent.getAttribute('id');
-            if (id === 'guney-kibris') {
-              return;
-            }
             setActiveCity(parent.getAttribute('data-iladi'));
             setIsPanelOpen(true);
+            updateProgressBar(data.locations[event.target.parentNode.getAttribute('data-iladi')]);
           }
         };
-    
-        element.addEventListener('mouseover', handleMouseOver);
-        element.addEventListener('mousemove', handleMouseMove);
-        element.addEventListener('mouseout', handleMouseOut);
-        element.addEventListener('click', handleClick);
-    
+      
+        svgElement.addEventListener('mouseover', handleMouseOver);
+        svgElement.addEventListener('mousemove', handleMouseMove);
+        svgElement.addEventListener('mouseout', handleMouseOut);
+        svgElement.addEventListener('click', handleClick);
+      
         return () => {
-          element.removeEventListener('mouseover', handleMouseOver);
-          element.removeEventListener('mousemove', handleMouseMove);
-          element.removeEventListener('mouseout', handleMouseOut);
-          element.removeEventListener('click', handleClick);
+          svgElement.removeEventListener('mouseover', handleMouseOver);
+          svgElement.removeEventListener('mousemove', handleMouseMove);
+          svgElement.removeEventListener('mouseout', handleMouseOut);
+          svgElement.removeEventListener('click', handleClick);
           document.body.removeChild(info);
         };
-      }, []);
-
-    useEffect(() => {
+      }, []);      
+      
+    
+      useEffect(() => {
         const handleClickOutside = (event) => {
           if (isPanelOpen && !document.getElementById('panel').contains(event.target)) {
             setIsPanelOpen(false);
@@ -65,9 +147,33 @@ function StockPage() {
           document.removeEventListener('mousedown', handleClickOutside);
         };
       }, [isPanelOpen]);
+
+      function updateProgressBar(cityData) {
+        Object.keys(cityData.items).forEach(itemKey => {
+          const item = cityData.items[itemKey];
+          const progressPercentage = (item.current / item.max) * 100;
+          const progressBarId = `${itemKey}-progress`;
+          const progressBar = document.getElementById(progressBarId);
+      
+          if (progressBar) { // ProgressBar'ın null olmadığından emin ol
+            if (progressPercentage < 40) {
+              progressBar.className = 'progress-bar red';
+            } else if (progressPercentage >= 40 && progressPercentage < 75) {
+              progressBar.className = 'progress-bar yellow';
+            } else {
+              progressBar.className = 'progress-bar green';
+            }
+        
+            progressBar.style.width = `${progressPercentage}%`;
+          } else {
+            console.error(`Progress bar with ID '${progressBarId}' not found in the document.`);
+          }
+        });
+      }
+      
   
     return(
-        <div className="stock_page">
+        <div className="stock_page page_div">
             <div className="tr_map">
                 <svg version="1.1" id="svg-turkiye-haritasi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1007.478 527.323" >
                     <g id="turkiye">
@@ -331,15 +437,39 @@ function StockPage() {
                 </svg>
             </div>
             {isPanelOpen && (
-                <>
-                    <div className="overlay" onClick={() => setIsPanelOpen(false)}></div>
-                    <div id="panel" className="city-panel">
-                    <h2>{activeCity}</h2>
-                    <p>{activeCity} hakkında daha fazla bilgi.</p>
-                    <button className="close-button" onClick={() => setIsPanelOpen(false)}>&times;</button>
-                    </div>
-                </>
-            )}
+  <>
+    <div className="overlay" onClick={() => setIsPanelOpen(false)}></div>
+    <div id="panel" className="city-panel">
+      <h2>{activeCity}</h2>
+      <div>
+        {data.locations[activeCity] && Object.entries(data.locations[activeCity].items).map(([key, value]) => {
+          const progressPercentage = (value.current / value.max) * 100;
+          let progressBarClass = 'progress-bar ';
+          if (progressPercentage < 40) {
+            progressBarClass += 'red';
+          } else if (progressPercentage >= 40 && progressPercentage < 75) {
+            progressBarClass += 'yellow';
+          } else {
+            progressBarClass += 'green';
+          }
+          return (
+            <div key={key} className="item">
+              <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong>
+              <div className="progress">
+                <div className={progressBarClass} style={{ width: `${progressPercentage}%` }} />
+                <div className="progress-text">{`${value.current} / ${value.max}`}</div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <button className="close-button" onClick={() => setIsPanelOpen(false)}>&times;</button>
+    </div>
+  </>
+)}
+
+
+
         </div>
     );
 };

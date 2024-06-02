@@ -80,7 +80,7 @@ function PaymentPage() {
 
     if (paymentSuccess) {
         return (
-            <div className="payment_page">
+            <div className="payment_page page_div">
                 <div className="payment_container">
                     <div className="success_message">
                         <div className="checkmark_icon">
