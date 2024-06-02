@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/stock_page.css";
+
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
@@ -31,6 +32,7 @@ function StockPage() {
           cityGroups.forEach(g => {
             const cityName = g.getAttribute('data-iladi');
             const paths = g.querySelectorAll('path');
+            
             console.log(data.locations)
             if (!data.locations[cityName]) {
               paths.forEach(path => {
@@ -127,7 +129,7 @@ function StockPage() {
       
   
     return(
-        <div className="stock_page page_div">
+        <div className="stock_page">
             <div className="tr_map">
                 <svg version="1.1" id="svg-turkiye-haritasi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1007.478 527.323" >
                     <g id="turkiye">
@@ -427,5 +429,6 @@ function StockPage() {
         </div>
     );
 };
+
 
 export default StockPage;

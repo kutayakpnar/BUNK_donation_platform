@@ -3,7 +3,6 @@
   flex-direction: column; /* Kolon düzeninde hizala */
   align-items: center;
   height: 80vh; /* Sayfanın yüksekliğine göre ayarlayabilirsiniz */
-  padding: 20px;
   text-align: center; /* Metni ortalar */
 }
 

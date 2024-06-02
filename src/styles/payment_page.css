@@ -3,8 +3,6 @@
     align-items: center; /* Vertically center the content */
     justify-content: center; /* Horizontally center the content */
     height: 100vh; /* Full viewport height */
-    background-size: cover;
-    background: linear-gradient(to bottom, var(--main_color), var(--secondary_color));
 }
 
 .payment_container {
@@ -14,7 +12,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     border-radius: 8px; /* Rounded corners */
     text-align: center; /* Center the text inside the container */
-    transform: translateY(-200px); /* Moves the container up by 50px */
 }
 
 .payment_container h1 {

@@ -144,7 +144,7 @@ function DonatePage() {
   };
 
   return (
-    <div className='donate_page_div page_div'>
+    <div className='donate_page_div'>
       {error && <div className='error_slide_bar'>{error}</div>}
       <div className='donation_options'>
         {dummy.map((data, key) => (

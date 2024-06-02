@@ -62,7 +62,6 @@ function PaymentPage() {
             alert('Please fill in valid payment details.');
         }
     };
-
     const sendDonationToFirebase = async (name, amount, donations) => {
         try {
             await addDoc(collection(db, "donations"), {
@@ -103,7 +102,7 @@ function PaymentPage() {
 
     if (paymentSuccess) {
         return (
-            <div className="payment_page page_div">
+            <div className="payment_page">
                 <div className="payment_container">
                     <div className="success_message">
                         <div className="checkmark_icon">
@@ -139,7 +138,7 @@ function PaymentPage() {
                         <input type="text" name="cvv" placeholder="CVV2" value={paymentDetails.cvv} onChange={handleChange} />
                     </div>
                     <div className="amount_input">
-                        <input type="text" name="amount" placeholder="Tutar" value={`${paymentDetails.amount} TL`} readOnly />
+                        <input type="text" name="amount" placeholder="Tutar" value={`${paymentDetails.amount} TL`} onChange={handleChange} readOnly />
                     </div>
                     <button className="button2" type="submit">Donate</button>
                 </form>

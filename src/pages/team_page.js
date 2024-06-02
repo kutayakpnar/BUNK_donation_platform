@@ -7,7 +7,7 @@ import niyazi from "../assets/niyazi.jpeg"
 import kutay from "../assets/kutay.jpg"
 const TeamPage = () => {
     return (
-        <div className="page_div">
+        <div className="">
             <div className="member_card_cover">
                 <h2>Meet with BUNK Team!</h2>
                 <MemberCard member_image_url={ünal} member_name="Ünal Dalkılıç" member_info="Unal DALKILIC is a third-year Computer Engineering student at İzmir Institute of Technology. He is responsible for frontend development on the BUNK donation platform." />

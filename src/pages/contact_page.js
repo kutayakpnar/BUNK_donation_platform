@@ -2,7 +2,7 @@ import "../styles/contact_page.css";
 
 const ContactPage = () => {
     return (
-        <div className="contact-page page_div">
+        <div className="contact-page">
             <div className="contact-header">
                 <h2 className="content-contact">Contact BUNK Team!</h2>
             </div>

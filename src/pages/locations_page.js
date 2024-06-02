@@ -20,7 +20,7 @@ const LocationsPage = () => {
     }, []);
 
     return (
-        <div className="locations-page page_div">
+        <div className="locations-page">
             <h2>BUNK Stock Locations</h2>
             <div className="locations-container">
                 {locations.map((location, index) => (

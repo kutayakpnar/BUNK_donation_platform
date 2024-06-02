@@ -17,9 +17,6 @@
 }
 
 body {
-  background: linear-gradient(to bottom, var(--main_color), var(--secondary_color));
-  /*background-color: rgb(205, 202, 202);*/
-  background-blend-mode:multiply;
   margin: 0;
   width: 100%;
   height: fit-content;
@@ -36,8 +33,7 @@ body {
   min-height: 100vh;
   /*background: linear-gradient(to bottom, var(--main_color), var(--secondary_color)), url(../public/background.png); */
   background-blend-mode: multiply;
-  background: linear-gradient(to bottom, var(--main_color), var(--secondary_color));
-  /*background-color: var(--main_color);*/
+  background: linear-gradient(to bottom, var(--main_color), var(--dark_color));
   margin: 0;
 }
 

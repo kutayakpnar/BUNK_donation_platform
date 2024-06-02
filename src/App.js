@@ -23,7 +23,7 @@ const App = () => {
           <Header />
           <MainMarginBox />
         </div>
-        <div className="main-content">
+        <div className="main-content page_div">
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path='/payment' element={<PaymentPage />} />

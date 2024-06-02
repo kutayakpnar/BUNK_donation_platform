@@ -110,18 +110,43 @@ header {
   }
   
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) { /* Küçük laptoplar ve tabletler için */
     nav ul {
-      flex-direction: column;
-      gap: 10px;
+      flex-direction: column; /* Yatay düzenden dikey düzene geçiş */
+      width: 100%; /* Liste genişliği */
+    }
+  
+    nav li {
+      text-align: center; /* Metni ortala */
+      padding: 10px; /* Daha küçük padding */
+    }
+  
+    .logo-image {
+      height: 60px; /* Logo boyutunu küçült */
     }
   
     .site-title {
-      font-size: 1.2rem;
+      font-size: 1.5rem; /* Başlık font boyutunu küçült */
+    }
+  }
+  
+  @media (max-width: 768px) { /* Mobil cihazlar için */
+    header {
+      flex-direction: column; /* Header içindeki öğeleri dikey düzene al */
+      padding: 10px 5px; /* Daha az padding */
     }
   
-    nav a {
-      font-size: 0.8rem;
+    nav ul {
+      padding-top: 10px; /* Üstten padding ekle */
+    }
+  
+    nav li {
+      width: 100%; /* List item'ları tam genişlik yap */
+      padding: 8px; /* Daha az padding */
+    }
+  
+    .donate-button {
+      font-size: 0.8rem; /* Bağış butonu font boyutunu küçült */
     }
   }
   
