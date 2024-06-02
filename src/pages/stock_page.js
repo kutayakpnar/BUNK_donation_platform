@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
 import "../styles/stock_page.css";
-
+import { useLoading } from '../loading_context.js';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+
+import water_icon from "../assets/water.png";
+import food_icon from "../assets/healthy-food.png";
+import clothing_icon from "../assets/fashion.png";
+import medicine_icon from "../assets/drugs.png";
+import tent_icon from "../assets/camping.png";
 
 function StockPage() {
     /*! SVG Türkiye Haritası | MIT Lisans | dnomak.com */
     const [activeCity, setActiveCity] = useState(null);
     const [isPanelOpen, setIsPanelOpen] = useState(false);
     const [data, setData] = useState({ locations: {} });
+    const { showLoading, hideLoading } = useLoading();
 
   useEffect(() => {
     async function fetchData() {
@@ -22,7 +29,8 @@ function StockPage() {
       setData({ locations: locationsData });
     }
 
-    fetchData();
+    showLoading();
+    fetchData().catch(error => console.error(error)).finally(() => {hideLoading()});
   }, []);
 
     useEffect(() => {
@@ -126,6 +134,17 @@ function StockPage() {
           }
         });
       }
+
+      const getIcon = (item) => {
+        const icons = {
+          clothing: clothing_icon,
+          food: food_icon,
+          water: water_icon,
+          medicine: medicine_icon, 
+          tent: tent_icon,
+        };
+        return icons[item] || null;
+      };
       
   
     return(
@@ -411,9 +430,12 @@ function StockPage() {
           return (
             <div key={key} className="item">
               <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong>
-              <div className="progress">
-                <div className={progressBarClass} style={{ width: `${progressPercentage}%` }} />
-                <div className="progress-text">{`${value.current} / ${value.max}`}</div>
+              <div className="progress_row">
+                <div className="progress_row_icon background_contain" style={{backgroundImage: `url(${getIcon(key)})`}}></div>
+                <div className="progress">
+                    <div className={progressBarClass} style={{ width: `${progressPercentage}%` }} />
+                    <div className="progress-text">{`${value.current} / ${value.max}`}</div>
+                </div>
               </div>
             </div>
           );
