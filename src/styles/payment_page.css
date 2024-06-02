@@ -1,0 +1,88 @@
+.payment_page {
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    height: 100vh; /* Full viewport height */
+}
+
+.payment_container {
+    width: 400px; /* Suitable width for the form */
+    padding: 20px; /* Padding around the content */
+    background-color: #fff; /* White background for clarity */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    text-align: center; /* Center the text inside the container */
+}
+
+.payment_container h1 {
+    color: #333; /* Dark grey color for the header */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+.payment_container p {
+    color: #666; /* Lighter grey for paragraph text */
+    font-size: 16px; /* Readable font size */
+    margin-bottom: 20px; /* Space below the paragraph */
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: calc(100% - 20px); /* Full width taking padding into account */
+    padding: 10px; /* Padding inside the inputs */
+    margin-bottom: 10px; /* Space between each field */
+    border: 1px solid #ccc; /* Subtle border for the inputs */
+    border-radius: 4px; /* Rounded corners for the inputs */
+    font-size: 16px; /* Matching font size for easy reading */
+}
+
+.expiry_cvv {
+    display: flex; /* Using flexbox to lay out children inline */
+    gap: 10px; /* Space between the month, year, and CVV inputs */
+}
+
+.expiry_cvv select,
+.expiry_cvv input[type="text"] {
+    flex: 1; /* Each child takes equal space */
+}
+
+.amount_input input {
+    font-size: 18px; /* Slightly larger font size for the amount */
+    font-weight: bold; /* Bold font style for emphasis */
+    color: #004085; /* Dark blue for high contrast */
+    border: 2px solid #0056b3; /* Darker blue border */
+}
+
+.button2 {
+    width: 100%; /* Button spans the full width of its container */
+    padding: 12px 10px; /* Comfortable padding inside the button */
+    background-color: #28a745; /* Bright green background for the button */
+    color: white; /* White text for high contrast */
+    border: none; /* No border for a cleaner look */
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 18px; /* Larger font size for easy interaction */
+    margin-top: 20px; /* Space above the button */
+}
+
+.button2:hover {
+    background-color: #218838; /* Slightly darker green on hover for feedback */
+}
+
+.success_message .checkmark_icon {
+    display: block; /* Block display for proper spacing */
+    margin: 0 auto 20px; /* Center horizontally, space below */
+    color: #28a745; /* Green color matching the button */
+    font-size: 48px; /* Large size for visibility */
+}
+
+.success_message h1 {
+    color: #28a745; /* Green color for success message */
+    font-size: 24px; /* Large font size for emphasis */
+}
+
+.success_message p {
+    color: #666; /* Consistent with other text colors */
+    font-size: 16px; /* Consistent with other font sizes */
+    margin-top: 10px; /* Space above the paragraph */
+}

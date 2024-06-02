@@ -10,8 +10,10 @@ import TeamPage from './pages/team_page';
 import Footer from "./components/footer";
 import LocationsPage from './pages/locations_page';
 import DonatePage from './pages/donate_page';
+import PaymentPage from './pages/payment'
 
 import firebaseApp from './firebaseConfig';
+import StockPage from './pages/stock_page';
 
 const App = () => {
   return (
@@ -21,13 +23,15 @@ const App = () => {
           <Header />
           <MainMarginBox />
         </div>
-        <div className="main-content">
+        <div className="main-content page_div">
           <Routes>
             <Route path="/" element={<MainPage />} />
+            <Route path='/payment' element={<PaymentPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/who-we-are" element={<TeamPage />} />
             <Route path="/where-we-work" element={<LocationsPage />} />
             <Route path="/donate" element={<DonatePage />} />
+            <Route path='/our-work' element={<StockPage />}/>
             {/* Diğer yollar buraya eklenebilir */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

@@ -10,7 +10,7 @@ const MainPage = () => {
     };
 
     return (
-        <div className="container page_div">
+        <div className="container">
             <main>
                 <section className="hero">
                     <div className="hero-text">

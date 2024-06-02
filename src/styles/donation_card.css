@@ -1,4 +1,4 @@
-.donation_card{
+.donation_card {
     display: inline-block;
     text-align: center;
     background-color: var(--light_color);
@@ -8,9 +8,12 @@
     transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
     margin: 10px;
     position: relative;  /* Normal durumda relative */
+    font-weight: bold;
+    overflow: visible; /* İçeriğin kart dışına çıkmasına izin verir */
+    width: 250px; /* Sabit genişlik */
 }
 
-.donation_card:hover{
+.donation_card:hover {
     opacity: 1;
     z-index: 999;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
@@ -25,6 +28,7 @@
 
 .donation_card h3{
     font-size: 20px;
+    font-weight: bold;
 }
 
 .donation_card_order_bar{
@@ -32,6 +36,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 50px;
+    font-weight: bold;
 }
 
 .donation_card_order_bar p{
@@ -46,17 +51,20 @@
     padding: 5px;
     border: none;
     border-radius: 20px;
+    font-weight: bold;
 }
 
 .donation_city_selection_div{
     margin-top: 30px;
     text-align: left;
+    font-weight: bold;
 }
 
 .donation_city_selection_div p{
     margin: 0;
     margin-bottom: 10px;
     font-size: 15px;
+    font-weight: bold;
 }
 
 .donation_city_selection_div select {
@@ -74,19 +82,28 @@
     color: var(--secondary_color);
 }
 
-.donation_card_detail_section:hover > .donation_card_detail_section_content{
-    max-height: 200px;
+.donation_card_detail_section:hover > .donation_card_detail_section_content {
+    max-height: 500px; /* İçeriğin genişleyebileceği maksimum yükseklik */
+    opacity: 1; /* İçerik görünür hale gelsin */
+    background-color: var(--light_color);
 }
 
 .donation_card_detail_section_p{
     font-size: 13px;
 }
 
-.donation_card_detail_section_content{
-    transition: max-height 0.5s ease;
-    max-height: 0;
-    overflow-y: scroll;
-    scrollbar-width: none;
+.donation_card_detail_section_content {
+    transition: all 0.5s ease;
+    max-height: 0; /* Başlangıçta kapalı */
+    overflow-y: hidden; /* İçerik taşmadan önce görünmez */
+    position: absolute;
+    width: 100%; /* Genişlik, card'ın genişliğine eşit */
+    left: 0; /* Sol tarafa yasla */
+    bottom: 0; /* Card'ın altından itibaren konumlandır */
+    background-color: transparent;
+    border-radius: 0 0 20px 20px;
+    z-index: 10; /* Diğer içeriklerin üzerinde görünsün */
+    padding: 5px 0;
 }
 
 .donation_card_detail_section_content_detail_row{
@@ -94,10 +111,12 @@
     justify-content: space-between;
     align-items: center;
     margin: 5px 0;
+    font-weight: bold;
 }
 
 .donation_card_detail_section_content_detail_row h5{
-    margin: 0;
+    margin: 0 5px;
+    font-weight: bold;
 }
 
 .donation_card_detail_section_content_detail_row_right{
@@ -105,6 +124,8 @@
     justify-content: space-between;
     align-items: center;
     gap: 5px;
+    font-weight: bold;
+    margin: 0 5px;
 }
 
 .donation_card_detail_section_content_detail_row_right div{
@@ -112,9 +133,11 @@
     height: 10px;
     border-radius: 50%;
     background-color: green;
+    font-weight: bold;
 }
 
 .donation_card_detail_section_content_detail_row_right p{
     font-size: 13px;
     margin: 0;
+    font-weight: bold;
 }

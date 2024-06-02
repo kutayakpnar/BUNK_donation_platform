@@ -4,14 +4,11 @@
     justify-content: space-between;
 }
 
-.donation_options{
-    padding: 30px;
-    flex-grow: 1;
+.donation_options {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 20px; 
     padding: 30px;
-    position: relative;  /* Pozisyon referansı sağlar */
 }
 
 .donation_summary_panel {
@@ -72,3 +69,40 @@
     font-size: 17px;
     margin: 0;
 }
+
+.donation_summary_content_row_delete_button{
+    width: 15px;
+    height: 15px;
+    background-image: url(../assets/remove.png);
+    border-radius: 50%;
+}
+
+.donation_summary_content_row_delete_button:hover{
+    cursor: pointer;
+}
+
+.error_slide_bar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    z-index: 1000;
+    border-radius: 5px;
+    margin: 10px;
+    animation: slideDown 0.5s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      top: -50px;
+    }
+    to {
+      opacity: 1;
+      top: 0;
+    }
+  }
+  
