@@ -13,6 +13,7 @@ import DonatePage from './pages/donate_page';
 import PaymentPage from './pages/payment'
 
 import firebaseApp from './firebaseConfig';
+import StockPage from './pages/stock_page';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/who-we-are" element={<TeamPage />} />
             <Route path="/where-we-work" element={<LocationsPage />} />
             <Route path="/donate" element={<DonatePage />} />
+            <Route path='/our-work' element={<StockPage />}/>
             {/* Diğer yollar buraya eklenebilir */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

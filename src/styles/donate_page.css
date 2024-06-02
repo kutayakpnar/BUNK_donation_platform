@@ -4,14 +4,11 @@
     justify-content: space-between;
 }
 
-.donation_options{
-    padding: 30px;
-    flex-grow: 1;
+.donation_options {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 20px; 
     padding: 30px;
-    position: relative;  /* Pozisyon referansı sağlar */
 }
 
 .donation_summary_panel {
@@ -71,6 +68,17 @@
 .donation_summary_content_row h5{
     font-size: 17px;
     margin: 0;
+}
+
+.donation_summary_content_row_delete_button{
+    width: 15px;
+    height: 15px;
+    background-image: url(../assets/remove.png);
+    border-radius: 50%;
+}
+
+.donation_summary_content_row_delete_button:hover{
+    cursor: pointer;
 }
 
 .error_slide_bar {
