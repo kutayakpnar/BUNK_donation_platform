@@ -1,75 +1,29 @@
 import { useEffect, useState } from "react";
 import "../styles/stock_page.css";
 
-const data = {
-    "locations": {
-      "Adana": {
-        "items": {
-          "clothing": { "current": 567, "max": 600 },
-          "food": { "current": 315, "max": 350 },
-          "medicine": { "current": 177, "max": 180 },
-          "tent": { "current": 76, "max": 120 },
-          "water": { "current": 56, "max": 90 }
-        },
-        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51143.19246257395!2d35.2533465383097!3d37.0"
-      },
-      "Ankara": {
-        "items": {
-          "clothing": { "current": 420, "max": 500 },
-          "food": { "current": 290, "max": 350 },
-          "medicine": { "current": 150, "max": 200 },
-          "tent": { "current": 85, "max": 100 },
-          "water": { "current": 70, "max": 100 }
-        },
-        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31143.19246257395!2d32.8533465383097!3d39.9"
-      },
-      "Trabzon": {
-        "items": {
-          "clothing": { "current": 300, "max": 400 },
-          "food": { "current": 200, "max": 300 },
-          "medicine": { "current": 120, "max": 150 },
-          "tent": { "current": 60, "max": 90 },
-          "water": { "current": 50, "max": 80 }
-        },
-        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41143.19246257395!2d39.7133465383097!3d40.9"
-      },
-      "Van": {
-        "items": {
-          "clothing": { "current": 480, "max": 500 },
-          "food": { "current": 340, "max": 350 },
-          "medicine": { "current": 160, "max": 180 },
-          "tent": { "current": 90, "max": 120 },
-          "water": { "current": 10, "max": 90 }
-        },
-        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51143.19246257395!2d43.0133465383097!3d38.5"
-      },
-      "İstanbul": {
-        "items": {
-          "clothing": { "current": 600, "max": 700 },
-          "food": { "current": 350, "max": 400 },
-          "medicine": { "current": 180, "max": 200 },
-          "tent": { "current": 110, "max": 130 },
-          "water": { "current": 100, "max": 120 }
-        },
-        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d71143.19246257395!2d29.0133465383097!3d41.0"
-      },
-      "İzmir": {
-        "items": {
-          "clothing": { "current": 450, "max": 550 },
-          "food": { "current": 300, "max": 350 },
-          "medicine": { "current": 160, "max": 180 },
-          "tent": { "current": 80, "max": 100 },
-          "water": { "current": 60, "max": 90 }
-        },
-        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61143.19246257395!2d27.0133465383097!3d38.4"
-      }
-    }
-  };
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebaseConfig";
 
 function StockPage() {
     /*! SVG Türkiye Haritası | MIT Lisans | dnomak.com */
     const [activeCity, setActiveCity] = useState(null);
     const [isPanelOpen, setIsPanelOpen] = useState(false);
+    const [data, setData] = useState({ locations: {} });
+
+  useEffect(() => {
+    async function fetchData() {
+      const querySnapshot = await getDocs(collection(db, "locations"));
+      const locationsData = {};
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        console.log(doc.data());
+        locationsData[doc.id] = doc.data();
+      });
+      setData({ locations: locationsData });
+    }
+
+    fetchData();
+  }, []);
 
     useEffect(() => {
         const svgElement = document.getElementById('svg-turkiye-haritasi');
@@ -78,6 +32,8 @@ function StockPage() {
           cityGroups.forEach(g => {
             const cityName = g.getAttribute('data-iladi');
             const paths = g.querySelectorAll('path');
+            
+            console.log(data.locations)
             if (!data.locations[cityName]) {
               paths.forEach(path => {
                 path.setAttribute('style', 'fill: #888888; pointer-events: none;');
@@ -132,7 +88,7 @@ function StockPage() {
           svgElement.removeEventListener('click', handleClick);
           document.body.removeChild(info);
         };
-      }, []);      
+      }, [data.locations]);      
       
     
       useEffect(() => {
@@ -473,5 +429,6 @@ function StockPage() {
         </div>
     );
 };
+
 
 export default StockPage;

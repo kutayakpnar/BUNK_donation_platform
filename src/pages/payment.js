@@ -21,12 +21,34 @@ function PaymentPage() {
         if (paymentSuccess) {
             setTimeout(() => {
                 navigate('/'); // Change this to the path of your main page
-            }, 5000); // Redirects after 5 seconds
+            }, 3000); // Redirects after 5 seconds
         }
     }, [paymentSuccess, navigate]);
 
     const handleChange = (e) => {
-        setPaymentDetails({...paymentDetails, [e.target.name]: e.target.value});
+        const { name, value } = e.target;
+        setPaymentDetails(prevDetails => ({ ...prevDetails, [name]: value }));
+        if (name === 'month' || name === 'year') {
+            validateDate(name, value);
+        }
+    };
+
+    const validateDate = (name, value) => {
+        const currentYear = new Date().getFullYear();
+        const currentMonth = new Date().getMonth() + 1;
+        let updatedDetails = { ...paymentDetails, [name]: value };
+
+        if (name === 'year' && updatedDetails.month && value == currentYear && updatedDetails.month < currentMonth) {
+            alert('You cannot choose a past date!');
+            updatedDetails = { ...updatedDetails, month: '' };
+        }
+
+        if (name === 'month' && updatedDetails.year && updatedDetails.year == currentYear && value < currentMonth) {
+            alert('You cannot choose a past date!');
+            updatedDetails = { ...updatedDetails, month: '' };
+        }
+
+        setPaymentDetails(updatedDetails);
     };
 
     const handleSubmit = async (e) => {
@@ -34,7 +56,7 @@ function PaymentPage() {
         if (paymentDetails.name && paymentDetails.cardNumber.length === 16 && paymentDetails.cvv.length === 3) {
             console.log("Payment Details: ", paymentDetails);
             await updateDatabase();
-            await sendDonationToFirebase(paymentDetails.name, paymentDetails.amount,location.state?.donations || []);
+            await sendDonationToFirebase(paymentDetails.name, paymentDetails.amount, location.state?.donations || []);
             setPaymentSuccess(true);
         } else {
             alert('Please fill in valid payment details.');
@@ -126,4 +148,3 @@ function PaymentPage() {
 }
 
 export default PaymentPage;
-
