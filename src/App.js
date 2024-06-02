@@ -11,13 +11,16 @@ import Footer from "./components/footer";
 import LocationsPage from './pages/locations_page';
 import DonatePage from './pages/donate_page';
 import PaymentPage from './pages/payment'
-
+import { LoadingProvider } from './loading_context';
+import LoadingScreen from './components/loading_screen';
 import firebaseApp from './firebaseConfig';
 import StockPage from './pages/stock_page';
 
 const App = () => {
   return (
     <Router>
+      <LoadingProvider>
+        <LoadingScreen />
       <div id="root">
         <div className="header">
           <Header />
@@ -38,6 +41,7 @@ const App = () => {
         </div>
         <Footer className="footer" />
       </div>
+      </LoadingProvider>
     </Router>
   );
 };

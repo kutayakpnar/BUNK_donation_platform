@@ -93,6 +93,8 @@
     border: 1px solid #ccc;
     height: 30px; /* Progress bar yüksekliği */
     position: relative;
+    border-radius: 20px;
+    flex-grow: 1;
   }
   
   .progress-bar {
@@ -102,6 +104,7 @@
     left: 0;
     top: 0;
     transition: width 0.4s ease; /* Geçiş efekti */
+    border-radius: 20px;
   }
   
   .progress-text {
@@ -125,4 +128,17 @@
 
 .progress-bar.green {
     background-color: #4CAF50; /* Yeşil renk */
+}
+
+.progress_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.progress_row_icon{
+    width: 30px;
+    height: 30px;
+    flex-grow: 0;
 }

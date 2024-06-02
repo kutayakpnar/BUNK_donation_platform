@@ -10,12 +10,14 @@ import food_icon from "../assets/healthy-food.png";
 import clothing_icon from "../assets/fashion.png";
 import medicine_icon from "../assets/drugs.png";
 import tent_icon from "../assets/camping.png";
+import { useLoading } from '../loading_context.js';
 
 function DonatePage() {
   const [donations, setDonations] = useState([]);
   const [dummy, setDummy] = useState([]);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { showLoading, hideLoading } = useLoading();
 
   const getUnitPrice = (item) => {
     const unitPrices = {
@@ -77,7 +79,8 @@ function DonatePage() {
   };
 
   useEffect(() => {
-    getData().catch(console.error);
+    showLoading();
+    getData().catch(error => console.error(error)).finally(() => {hideLoading()});
   }, []);
 
   const handle_donation = (header, amount, city) => {
