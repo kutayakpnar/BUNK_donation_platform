@@ -7,10 +7,12 @@
   }
   
   .locations-container {
-    display: grid;
+    display: flex;
   grid-template-columns: repeat(3,1fr); /* Her sırada 3 sütun */
   grid-row-gap: 20px; /* Kutular arasındaki dikey boşluk */
-  justify-items: center;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
   }
   
   .location-box {
@@ -20,7 +22,7 @@
     padding: 10px;
     text-align: center;
     width: 80%;
-    min-width: 300px;
+    max-width: 500px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -41,4 +43,3 @@
     margin-top: 20px;
     text-align: center; /* Paragrafı ortalamak için */
   }
-  

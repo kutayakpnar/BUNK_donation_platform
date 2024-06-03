@@ -141,3 +141,9 @@
     margin: 0;
     font-weight: bold;
 }
+
+@media (max-width: 768px){
+    .donation_card{
+        width: 200px;
+    }
+}
