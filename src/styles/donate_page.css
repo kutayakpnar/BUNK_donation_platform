@@ -106,3 +106,20 @@
     }
   }
   
+  @media (max-width: 768px){
+    .donate_page_div {
+        min-height: 70vh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .donation_options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; 
+        padding: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+  }

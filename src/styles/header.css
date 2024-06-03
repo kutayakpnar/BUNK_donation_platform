@@ -61,6 +61,24 @@ header {
     font-family: 'Noto Sans', sans-serif;
   }
 
+  .responsive_button{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+    font-size: 20px;
+    border-radius: 50%;
+    margin-left: 20px;
+    display: none;
+    background-image: url(../assets/menu.png);
+  }
+
+  .responsive_button:hover{
+    background-color: var(--main_color);
+  }
+
   nav li {
     padding: 15px 30px;
     border-radius: 20px;
@@ -112,7 +130,6 @@ header {
 
   @media (max-width: 1024px) { /* Küçük laptoplar ve tabletler için */
     nav ul {
-      flex-direction: column; /* Yatay düzenden dikey düzene geçiş */
       width: 100%; /* Liste genişliği */
     }
   
@@ -138,6 +155,7 @@ header {
   
     nav ul {
       padding-top: 10px; /* Üstten padding ekle */
+      flex-direction: column;
     }
   
     nav li {
@@ -147,6 +165,14 @@ header {
   
     .donate-button {
       font-size: 0.8rem; /* Bağış butonu font boyutunu küçült */
+    }
+
+    .logo h1{
+      font-size: 20px;
+    }
+
+    .responsive_button{
+      display: flex;
     }
   }
   
